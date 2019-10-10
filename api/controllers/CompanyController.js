@@ -22,8 +22,13 @@ module.exports = {
                 
     },
 
-    find(req, res){
-
+    async find(req, res){
+       try{
+           const companies = await Company.find();
+           return res.ok(companies);
+       }catch (err){
+          return res.serveError(err);
+       }
     },
 
     findOne(req, res){

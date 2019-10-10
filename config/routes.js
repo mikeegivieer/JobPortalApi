@@ -11,7 +11,8 @@
 module.exports.routes = {
 
 'POST /companies': 'CompanyController.create',
-'GET /companies': 'CompanyController.find'
+'GET /companies': 'CompanyController.find',
+'GET /companies/:id': 'CompanyController.findOne'
 
 
 };

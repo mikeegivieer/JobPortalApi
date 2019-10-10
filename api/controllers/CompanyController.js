@@ -71,7 +71,18 @@ module.exports = {
          }
     },
 
-    delete(req, res){
+   async delete(req, res){
+
+     try{
+        const results = await Company.destroy({
+            id: req.params.id
+        });
+
+        return res.ok(results);
+
+     }catch (err){
+         res.serveError(err);
+     }
 
     }
 

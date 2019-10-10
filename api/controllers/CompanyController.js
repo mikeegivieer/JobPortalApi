@@ -46,8 +46,29 @@ module.exports = {
 
     },
 
-    update(req, res){
+    async update(req, res){
+         try{
+             let params = req.allParams();
+             let attributes ={};
 
+             if(params.name){
+                 attributes.name = params.name;
+             }
+
+             if(params.city){
+                 attributes.city = params.city;
+             }
+
+             if(params.address){
+                 attributes.address = params.address;
+             }
+
+             const results = await Company.update({id: req.params.id}, attributes);
+             return res.ok(results);
+             
+         }catch(err){
+             return res.serveError(err);
+         }
     },
 
     delete(req, res){

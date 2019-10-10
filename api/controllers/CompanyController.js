@@ -13,18 +13,14 @@ module.exports = {
            name: params.name,
            city: params.city,
            address: params.address
-      }, (err, results)=>{
-
-         if(err){
-             return res.serverError(err);
-         }
-         return res.ok('OK!');
-
-      });
-
-
-
+      })
         
+        .then(results => {
+            return res.ok(results);
+        })
+        .catch(err => {
+            return res.serverError(err);
+        });        
     },
 
     find(req, res){

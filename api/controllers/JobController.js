@@ -26,7 +26,7 @@ desciption, salary, position
 
 }).fetch();
         
-const job = await Job.create({title, jobDetail: jobDetail.id});
+const job = await Job.create({title, jobDetail: jobDetail.id}).fetch();
 
 return res.ok(job);
 
@@ -42,9 +42,17 @@ return res.serverError(err);
    * `JobController.find()`
    */
   find: async function (req, res) {
-    return res.json({
-      todo: 'find() is not implemented yet!'
-    });
+     try{
+       const jobs = await Job.find().populate('jobDetail');
+       return res.ok(jobs);
+
+
+
+     }catch (err){
+       return res.serverError(err);
+     }
+
+
   }
 
 };

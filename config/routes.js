@@ -18,6 +18,7 @@ module.exports.routes = {
 
 //JOBS
 'POST /jobs': 'JobController.create',
+'GET /jobs': 'JobController.find',
 
 
 

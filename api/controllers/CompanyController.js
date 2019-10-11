@@ -5,7 +5,7 @@ module.exports = {
       //get the name from the req params
       let params = req.allParams();
       if(!params.name){
-          return res.badRequest({err: 'name is required field'});
+          return res.badRequest({err: 'Name is required field'});
       }
 
       //Create a new record in company 

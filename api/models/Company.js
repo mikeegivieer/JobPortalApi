@@ -13,6 +13,11 @@ module.exports = {
 
         address :{
             type: 'string'
+        },
+
+        jobs: {
+           collection: 'Job',
+           via: 'company'
         }
     }
 };

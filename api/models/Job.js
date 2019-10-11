@@ -30,6 +30,12 @@ module.exports = {
        model: 'JobDetail',
        columnName: 'jobDetailId',
        required: true
+    },
+
+    company: {
+      model: 'Company',
+      columnName: 'companyId',
+      required: true
     }
   
       

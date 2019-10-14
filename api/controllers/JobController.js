@@ -13,7 +13,7 @@ module.exports = {
    */
   create: async function (req, res) {
     try{
-       let {title, desciption, salary, position} = req.allParams();
+       let {title, desciption, salary, position, companyId} = req.allParams();
        if(!title){
          return res.badRequest({err: 'Title is required field'});
        }
@@ -26,15 +26,13 @@ desciption, salary, position
 
 }).fetch();
         
-const job = await Job.create({title, jobDetail: jobDetail.id}).fetch();
+const job = await Job.create({title, jobDetail: jobDetail.id, company: companyId}).fetch();
 
 return res.ok(job);
 
     }catch(err){
 return res.serverError(err);
     }
-
-
 
   },
 
@@ -43,11 +41,12 @@ return res.serverError(err);
    */
   find: async function (req, res) {
      try{
-       const jobs = await Job.find().populate('jobDetail');
+
+       const jobs = await Job.find()
+       .populate('jobDetail')
+       .populate('company');
        return res.ok(jobs);
-
-
-
+       
      }catch (err){
        return res.serverError(err);
      }

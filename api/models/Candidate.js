@@ -1,5 +1,5 @@
 /**
- * Job.js
+ * Candidate.js
  *
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
@@ -13,9 +13,9 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
-    title: { type: 'string', required: true },
+    name: { type: 'string', required: true },
 
-
+    email: { type: 'string', required: true},
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
@@ -25,27 +25,13 @@ module.exports = {
     //  ╔═╗╔═╗╔═╗╔═╗╔═╗╦╔═╗╔╦╗╦╔═╗╔╗╔╔═╗
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
-    
-    jobDetail:{
-       model: 'JobDetail',
-       columnName: 'jobDetailId',
-       required: true
-    },
+     jobs :{
+        collection: 'Job',
+        via: 'candidate',
+        through: 'application'
+     }
 
-    company: {
-      model: 'Company',
-      columnName: 'companyId',
-      required: true
-    },
 
-    candidates:{
-      collection: 'Candidate',
-      via: 'job',
-      through: 'application'
-    
-    }
-  
-      
 
   },
 

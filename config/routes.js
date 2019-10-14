@@ -21,8 +21,11 @@ module.exports.routes = {
 'GET /jobs': 'JobController.find',
 
 //APLICATIONS
-'POST /applications' : 'ApplicationController.create'
-'GET /applications' : 'ApplicationController.find'
+'POST /applications' : 'ApplicationController.create',
+'GET /applications' : 'ApplicationController.find',
 
+//USER
+'POST /user/login' : 'UserController.login',
+'POST /user/signup' : 'UserController.signup',
 
 };
